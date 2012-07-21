@@ -323,6 +323,16 @@ NSString *PXFilmStripSelectionDidChangeNotificationName = @"PXFilmStripSelection
 
 	for (i = 0; i < numberOfCels; i++)
 	{
+        if(i == activeCelForField){
+            [fieldCell setBezeled:YES];
+            [fieldCell setDrawsBackground:YES];
+            [fieldCell setTextColor:[NSColor blackColor]];
+        }
+        else{
+            [fieldCell setBezeled:NO];
+            [fieldCell setDrawsBackground:NO];
+            [fieldCell setTextColor:[NSColor whiteColor]];
+        }
 		[fieldCell setStringValue:[NSString stringWithFormat:@"%3.3f s", [[dataSource celAtIndex:i] duration]]];
 		[fieldCell drawWithFrame:[self fieldCellRectForCelIndex:i editing:(activeCelForField != -1)] inView:self];
 		
